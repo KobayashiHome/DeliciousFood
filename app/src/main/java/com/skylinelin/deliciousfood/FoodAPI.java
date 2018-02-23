@@ -14,7 +14,8 @@ public class FoodAPI {
 
     public static List<Food> getDemoFood(Context context){
         List<Food> foods = new ArrayList<>();
-        foods.add(new Food("提拉米苏", R.drawable.tiramisu, 80, Food.DESSERT_FOOD, false, 4.5f, context.getString(R.string.tiramisu)));
+        Food food1 = new Food("提拉米苏", R.drawable.tiramisu, 80, Food.DESSERT_FOOD, false, 4.5f, context.getString(R.string.tiramisu));
+        foods.add(food1);
         foods.add(new Food("舒芙蕾", R.drawable.souffle, 65, Food.DESSERT_FOOD, false, 4f, context.getString(R.string.souffle)));
         foods.add(new Food("欧培拉", R.drawable.opera, 48, Food.DESSERT_FOOD, false, 3.5f, context.getString(R.string.opera)));
         foods.add(new Food("汉堡包", R.drawable.hamburger, 15, Food.FAST_FOOD, false, 4.0f, context.getString(R.string.hamburger)));

@@ -7,24 +7,26 @@ package com.skylinelin.deliciousfood;
 
 public class Food {
     public static final int CHINESE_FOOD = 1;
+
     public static final int FAST_FOOD = 2;
+
     public static final int DESSERT_FOOD = 3;
     /**
-     * 名称
+     * 美食的名字
      */
     private String name;
 
     /**
-     * 图片
+     * 美食图片资源id
      */
-    private int imgResld;
+    private int imgResId;
 
     /**
-     * 价格
+     * 美食的价格
      */
     private int price;
     /**
-     * 类型，美食类型：
+     * 美食的类型,接受的类型:
      * CHINESE_FOOD
      * FAST_FOOD
      * DESSERT_FOOD
@@ -32,7 +34,12 @@ public class Food {
     private int type;
 
     /**
-     * 评分
+     * 是否辣
+     */
+    private boolean isSpicy;
+
+    /**
+     * 美食的评分
      */
     private float rating;
 
@@ -41,10 +48,15 @@ public class Food {
      */
     private String description;
 
-    /**
-     * 是否辣
-     */
-    private boolean isSpicy;
+    public Food(String name, int imgResId, int price, int type, boolean isSpicy, float rating, String description) {
+        this.name = name;
+        this.imgResId = imgResId;
+        this.price = price;
+        this.type = type;
+        this.isSpicy = isSpicy;
+        this.rating = rating;
+        this.description = description;
+    }
 
     public String getName() {
         return name;
@@ -54,12 +66,12 @@ public class Food {
         this.name = name;
     }
 
-    public int getImgResld() {
-        return imgResld;
+    public int getImgResId() {
+        return imgResId;
     }
 
-    public void setImgResld(int imgResld) {
-        this.imgResld = imgResld;
+    public void setImgResId(int imgResId) {
+        this.imgResId = imgResId;
     }
 
     public int getPrice() {
@@ -78,6 +90,14 @@ public class Food {
         this.type = type;
     }
 
+    public boolean isSpicy() {
+        return isSpicy;
+    }
+
+    public void setSpicy(boolean spicy) {
+        isSpicy = spicy;
+    }
+
     public float getRating() {
         return rating;
     }
@@ -94,22 +114,8 @@ public class Food {
         this.description = description;
     }
 
-    public boolean isSpicy() {
-        return isSpicy;
-    }
-
-    public void setSpicy(boolean spicy) {
-        isSpicy = spicy;
-    }
-
-    public Food(String name, int imgResld, int price, int type, boolean rating, float description, String isSpicy) {
-
-        this.name = name;
-        this.imgResld = imgResld;
-        this.price = price;
-        this.type = type;
-        this.rating = rating;
-        this.description = description;
-        this.isSpicy = isSpicy;
+    @Override
+    public String toString() {
+        return name;
     }
 }
