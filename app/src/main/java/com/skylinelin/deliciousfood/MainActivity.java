@@ -3,6 +3,7 @@ package com.skylinelin.deliciousfood;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,7 +21,8 @@ import java.util.List;
  * @date 2018/2/6
  * */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "MainActivity" ;
     /**
      * 初始化控件
      */
@@ -100,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
         page = 0;
         mImageViewFood.setImageResource(mFoodList.get(page).getImgResId());
 
+        //翻页按钮
+        mButtonUp = findViewById(R.id.button_up);
+        mButtonNext = findViewById(R.id.button_next);
+        mButtonUp.setOnClickListener(this);
+        mButtonNext.setOnClickListener(this);
+
 
     }
 
@@ -122,4 +130,45 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 翻页按钮点击事件
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button_up:
+                showUp();
+                break;
+
+            case R.id.button_next:
+                showNext();
+                break;
+                default:
+                    break;
+        }
+    }
+
+    /**
+     * 翻页功能
+     */
+    private void showUp(){
+        int upPage = (page - 1 + mFoodList.size())%mFoodList.size();
+        showPageAtIndex(upPage);
+
+    }
+
+    private void showNext(){
+        int nextPage = (page + 1)%mFoodList.size();
+        showPageAtIndex(nextPage);
+
+    }
+
+    private void showPageAtIndex(int index){
+        Log.d(TAG,"showPageAtIndex:" + index);
+
+        Food food = mFoodList.get(index);
+        mImageViewFood.setImageResource(food.getImgResId());
+        page = index;
+    }
 }
